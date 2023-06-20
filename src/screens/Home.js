@@ -16,7 +16,9 @@ export default function Home() {
       <div>
         <Carousel/>
       </div>
-      <div className='m-3'>
+      <div className='m-3 d-inline'>
+        <Card/>
+        <Card/>
         <Card/>
       </div>
         <div>
