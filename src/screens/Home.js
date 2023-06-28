@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 import Card from '../components/Card'
-import Carousel from '../components/Carousel'
+
 
 
 
@@ -68,7 +68,7 @@ export default function Home() {
         {
           foodcategory !== [] ? foodcategory.map((data) => {
             return (
-              <div className='row mb-3'>
+              <div className='row mx-2'>
                 <div key={data._id} className='fs-3 m-3'>
                   {data.CategoryName}
                 </div>
@@ -77,10 +77,9 @@ export default function Home() {
                   .map(filterItems => {
                     return (
                       <div key={filterItems._id} className='col-12 col-md-6 col-lg-3 '>
-                        <Card foodname={filterItems.name}
-                          options={filterItems.options}
-                          imgurl={filterItems.img}
-                          description={filterItems.description}>
+                        <Card fooditems={filterItems}
+                          options={filterItems.options[0]}
+                          >
 
                         </Card>
                       </div>
