@@ -24,19 +24,23 @@ export default function Card(props) {
                 break;
             }
         }
-        if(food !== [])
-        {
-            if(food.size === size)
-            {
-                await dispatch({type:"UPDATE",id:foodItem._id,qty:qty,price:finalPrice})
-                return
+        if (food !== []) {
+            if (food.size === size) {
+              await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty })
+              return
             }
-        }
-        else if(food.size !== size)
-        {
-            await dispatch({type:"ADD",id:foodItem._id,name:foodItem.name,img:foodItem.img,price:finalPrice,qty:qty,size:size})
-        // console.log(data);
-        }
+            else if (food.size !== size) {
+              await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size,img: props.ImgSrc })
+              
+              return
+            }
+            return
+          }
+      
+          await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size })
+      
+      
+          // setBtnEnable(true)
     }
     let finalPrice = qty * parseInt(options[size]);
     useEffect(()=>{
