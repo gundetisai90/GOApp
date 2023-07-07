@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 import { useContext } from 'react';
 
-
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
@@ -18,12 +17,12 @@ const reducer = (state, action) => {
             return empArray
         case "UPDATE":
             let arr = [...state]
+            console.log("array at update:",arr);
             arr.find((food, index) => {
-                if (food.id === action.id ) {
+                if (food.id === action.id && food.size === action.size) {
                     console.log(food.qty, parseInt(action.qty), action.price + food.price)
                     arr[index] = { ...food, qty: parseInt(action.qty) + food.qty, price: action.price + food.price }
                 }
-                return arr
             })
             return arr
         default:

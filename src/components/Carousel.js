@@ -12,7 +12,7 @@ export default function Carousel() {
                         </form>
                     </div>
                     <div className="carousel-item active">
-                        <img src="https://source.unsplash.com/random/900x700/?Burger" className="d-block w-100" alt="..." />
+                        <img src="https://source.unsplash.com/random/900x700/?Burger" Name="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
                         <img src="https://source.unsplash.com/random/900x700/?Biryani" className="d-block w-100" alt="..." />

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function Login() {
   let navigate = useNavigate();
@@ -32,8 +34,12 @@ export default function Login() {
     setcredentials({ ...credentials, [e.target.name]: e.target.value })
   }
   return (
-    <>
+    <div>
       <div>
+        <Navbar/>
+      </div>
+      <div className='card mt-5 m-auto ' style={{"maxWidth":"500px"}}>
+        <h3>LOGIN FORM</h3>
         <div className='container'>
           <form onSubmit={handlesubmit}>
 
@@ -53,6 +59,9 @@ export default function Login() {
           </form>
         </div>
       </div>
-    </>
+      <div>
+        <Footer/>
+      </div>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
-import React,{useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import { useDispatch,useCart } from './contextReducer';
+import { useDispatch, useCart } from './contextReducer';
 
 export default function Card(props) {
     let dispatch = useDispatch();
@@ -12,49 +12,48 @@ export default function Card(props) {
     const [qty, setqty] = useState(1);
     const [size, setsize] = useState("");
 
-  let foodItem = props.fooditems;
+    let foodItem = props.fooditems;
 
-    const handleAddToCart = async ()=>{
-        let food =[];
-        for (const item of data)
-        {
-            if(item.id=== foodItem._id)
-            {
-                food = item;
+    const handleAddToCart = async () => {
+        // console.log(foodItem);
+        let food = [];
+        for (const item of data) {
+            if (item.id === foodItem._id) {
+                food = data;
                 break;
             }
         }
+        console.log(food);
         if (food !== []) {
             if (food.size === size) {
-              await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty })
-              return
+                await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty })
+                return
             }
             else if (food.size !== size) {
-              await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size,img: props.ImgSrc })
-              
-              return
+                await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size, img: foodItem.img })
+
+                return
             }
             return
-          }
-      
-          await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size })
-      
-      
-          // setBtnEnable(true)
+        }
+
+        await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size })
+
+        // setBtnEnable(true)
     }
     let finalPrice = qty * parseInt(options[size]);
-    useEffect(()=>{
+    useEffect(() => {
         setsize(priceRef.current.value)
-    },[])
+    }, [])
     return (
         <div>
             <div className="card mt-3" style={{ "width": "20rem", "maxHeight": "450px" }}>
-                <img src={foodItem.img} className="card-img-top" style={{"height":"200px" ,"objectFit":"fill"}} alt="..." />
+                <img src={foodItem.img} className="card-img-top" style={{ "height": "200px", "objectFit": "fill" }} alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{foodItem.name}</h5>
                     <p className="card-text">{foodItem.description}</p>
                     <div className='container w-100'>
-                        <select className='m-2 h-100  bg-success rounded' onChange={(e)=>setqty(e.target.value)}>
+                        <select className='m-2 h-100  bg-success rounded' onChange={(e) => setqty(e.target.value)}>
                             {
                                 Array.from
                                     (
@@ -66,9 +65,9 @@ export default function Card(props) {
                                     )
                             }
                         </select>
-                        <select className='m-2 h-100  bg-success rounded' ref={priceRef} onChange={(e)=>setsize(e.target.value)}>
-                            {priceOptions.map((data)=>{
-                                return(
+                        <select className='m-2 h-100  bg-success rounded' ref={priceRef} onChange={(e) => setsize(e.target.value)}>
+                            {priceOptions.map((data) => {
+                                return (
                                     <option key={data} value={data}>{data}</option>
                                 )
                             })}
