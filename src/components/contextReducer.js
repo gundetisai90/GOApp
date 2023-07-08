@@ -17,9 +17,8 @@ const reducer = (state, action) => {
             return empArray
         case "UPDATE":
             let arr = [...state]
-            console.log("array at update:",arr);
             arr.find((food, index) => {
-                if (food.id === action.id && food.size === action.size) {
+                if (food.id === action.id) {
                     console.log(food.qty, parseInt(action.qty), action.price + food.price)
                     arr[index] = { ...food, qty: parseInt(action.qty) + food.qty, price: action.price + food.price }
                 }
@@ -29,6 +28,7 @@ const reducer = (state, action) => {
             console.log("Error in Reducer");
     }
 };
+
 
 export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, []);
