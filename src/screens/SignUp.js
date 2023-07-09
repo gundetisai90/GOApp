@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function SignUp() {
+    let navigate = useNavigate();
     const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
     const handlesubmit = async (e) => {
         e.preventDefault();
@@ -17,6 +20,7 @@ export default function SignUp() {
         console.log(json);
         if (json.success) {
             alert("New User Created")
+            navigate("/login");
         }
         else {
             alert("Enter Valid Credentials")
@@ -28,7 +32,12 @@ export default function SignUp() {
     }
     return (
         <div>
-            <div className='container'>
+      <div>
+        <Navbar/>
+      </div>
+      <div className='card mt-5 m-auto ' style={{"maxWidth":"500px"}}>
+        <h3>LOGIN FORM</h3>
+        <div className='container'>
                 <form onSubmit={handlesubmit}>
                     <div className="mb-3">
                         <label htmlFor="exampleInputName1" className="form-label"> Name</label>
@@ -52,6 +61,10 @@ export default function SignUp() {
                     <Link to="/login" className="m-3 btn btn-danger">Already a User</Link>
                 </form>
             </div>
-        </div>
+      </div>
+      <div>
+        <Footer/>
+      </div>
+    </div>
     )
 }
