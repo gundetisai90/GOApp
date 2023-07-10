@@ -17,7 +17,7 @@ export default function SignUp() {
             body: JSON.stringify({ name: credentials.name, email: credentials.email, location: credentials.geolocation, password: credentials.password })
         })
         const json = await response.json()
-        console.log(json);
+        // console.log(json);
         if (json.success) {
             alert("New User Created")
             navigate("/login");
