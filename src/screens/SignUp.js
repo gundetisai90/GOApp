@@ -36,7 +36,7 @@ export default function SignUp() {
         <Navbar/>
       </div>
       <div className='card mt-5 m-auto ' style={{"maxWidth":"500px"}}>
-        <h3>LOGIN FORM</h3>
+        <h3>SIGN UP  FORM</h3>
         <div className='container'>
                 <form onSubmit={handlesubmit}>
                     <div className="mb-3">
