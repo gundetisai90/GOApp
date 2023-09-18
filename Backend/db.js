@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongo = 'mongodb+srv://saireddygundeti902:Reddysai%409090@cluster0.dztlkr5.mongodb.net/GOFood';
+const mongo = '';
 // const mongo= "mongodb://localhost:27017/GOfood";
 const mongoDB = async () => {
   try {
